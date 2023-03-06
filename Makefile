@@ -6,18 +6,15 @@
 #    By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/24 15:36:13 by razasharuku       #+#    #+#              #
-#    Updated: 2023/02/24 15:39:07 by razasharuku      ###   ########.fr        #
+#    Updated: 2023/03/06 12:20:28 by razasharuku      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-NAME = libft.a
-SRCS = ft_bzero.c \
-		ft_isdigit.c \
-		ft_isalnum.c \
-		ft_isalpha.c \
-
+NAME = gnl.a
+SRCS = get_next_line.c \
+		get_next_line_utils.c \
 
 SRCS_B = ft_lstlast.c \
 			ft_lstsize.c \
