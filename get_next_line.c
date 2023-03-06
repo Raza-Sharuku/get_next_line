@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:37:59 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/06 12:21:28 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/06 21:23:08 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char	*ft_free_joined(char *buffer, char *tmp)
 	char *joined;
 
 	joined = ft_strjoin(buffer, tmp);
+	printf("!! %s !!\n", joined);
 	free(buffer);
 	return (joined);
 }
@@ -71,13 +72,14 @@ char	*ft_read_file(int fd, char *buffer)
 	char	*tmp;
 	int		read_count;
 
-	if (buffer == 0)
-		return (NULL);
+	// if (buffer == 0)
+	// 	return (NULL);
 	tmp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	read_count = 1;
 	while (read_count > 0)
 	{
 		read_count = read(fd, tmp, BUFFER_SIZE);
+		printf("!! read_count%d !!\n", read_count);
 		if (read_count == -1)
 		{
 			free(tmp);

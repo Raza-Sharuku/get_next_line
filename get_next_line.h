@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:36:27 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/06 12:32:04 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/06 20:58:05 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <unistd.h>
 #include <fcntl.h>
+# include <stdio.h>
 
 //get_next_line_utils.c
 void			ft_bzero(void *s, size_t n);
@@ -33,12 +34,5 @@ char			*ft_create_line(char *buffer);
 char			*ft_free_joined(char *buffer, char *tmp);
 char			*ft_read_file(int fd, char *buffer);
 char			*get_next_line(int fd);
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
 
 #endif

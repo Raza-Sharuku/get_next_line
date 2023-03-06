@@ -6,7 +6,7 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:38:50 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/06 11:15:31 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/06 21:26:48 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,25 +51,30 @@ void	*ft_calloc(size_t count, size_t size)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
-	size_t	total_len;
+	size_t	len;
 	char	*str;
+	size_t		len_s1;
+	size_t		len_s2;
 
-	i = 0;
-	total_len = ft_strlen(s1) + ft_strlen(s2);
-	str = malloc(sizeof(char) * (total_len + 1));
-	if (!str || !s1 || !s2)
+	len = 0;
+	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		str[i] = s1[i];
-		i++;
-	}
-	j = 0;
-	while (s2[j] != '\0')
-		str[i++] = s2[j++];
-	str[i] = '\0';
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	str = NULL;
+	if ((len_s1 / 2 + len_s2 / 2) + 1 < SIZE_MAX / 2)
+		str = (char *)malloc(len_s1 + len_s2 + 1);
+	if (str == NULL)
+		return (NULL);
+	while (*s1)
+		*str++ = *s1++;
+	printf("!! buffer = %s \n", s1);
+	printf("!! tmp = %s \n", s2);
+	printf("!! str = %s \n", str);
+	printf("!! str = %zu \n", len);	
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
 	return (str);
 }
 
