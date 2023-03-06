@@ -6,16 +6,19 @@
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:36:27 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/06 12:23:08 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/06 12:32:04 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+#ifndef BUFFER_SIZE
 # define BUFFER_SIZE 2
+#endif
 # include <stdlib.h>
 # include <limits.h>
 # include <unistd.h>
+#include <fcntl.h>
 
 //get_next_line_utils.c
 void			ft_bzero(void *s, size_t n);
