@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:38:50 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/06 21:26:48 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/07 20:30:26 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,31 +51,29 @@ void	*ft_calloc(size_t count, size_t size)
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len;
-	char	*str;
+	char		*str;
 	size_t		len_s1;
 	size_t		len_s2;
-
-	len = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
+	char 		*str_ptr;
+	
 	str = NULL;
+	len_s1 = 0;
+	if (s2 == NULL)
+		return (NULL);
+	if (s1 != NULL)
+		len_s1 = ft_strlen(s1);	
+	len_s2 = ft_strlen(s2);
 	if ((len_s1 / 2 + len_s2 / 2) + 1 < SIZE_MAX / 2)
 		str = (char *)malloc(len_s1 + len_s2 + 1);
+	str_ptr = str;
 	if (str == NULL)
 		return (NULL);
-	while (*s1)
+	while (s1 != NULL && *s1)
 		*str++ = *s1++;
-	printf("!! buffer = %s \n", s1);
-	printf("!! tmp = %s \n", s2);
-	printf("!! str = %s \n", str);
-	printf("!! str = %zu \n", len);	
 	while (*s2)
 		*str++ = *s2++;
 	*str = '\0';
-	return (str);
+	return (str_ptr);
 }
 
 char	*ft_strchr(const char *s, int c)

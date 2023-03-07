@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:37:59 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/06 21:23:08 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/07 20:46:25 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char	*ft_create_line(char *buffer)
 	}
 	//have to come back and check if it is really works.
 	if (buffer[i] == '\0' || buffer[i] == '\n')
-		line[i] = '\n';
+		line[i] = buffer[i];
 	return (line);
 }
 
@@ -61,7 +61,6 @@ char	*ft_free_joined(char *buffer, char *tmp)
 	char *joined;
 
 	joined = ft_strjoin(buffer, tmp);
-	printf("!! %s !!\n", joined);
 	free(buffer);
 	return (joined);
 }
@@ -72,25 +71,21 @@ char	*ft_read_file(int fd, char *buffer)
 	char	*tmp;
 	int		read_count;
 
-	// if (buffer == 0)
-	// 	return (NULL);
 	tmp = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 	read_count = 1;
 	while (read_count > 0)
 	{
 		read_count = read(fd, tmp, BUFFER_SIZE);
-		printf("!! read_count%d !!\n", read_count);
-		if (read_count == -1)
-		{
-			free(tmp);
-			return (NULL);
-		}
+		if (read_count <= 0)
+			break;
 		tmp[read_count] = '\0';
 		buffer = ft_free_joined(buffer, tmp);
 		if (ft_strchr(tmp, '\n'))
 			break ;
 	}
 	free(tmp);
+	if (buffer == NULL)
+		return NULL;
 	return (buffer);
 }
 

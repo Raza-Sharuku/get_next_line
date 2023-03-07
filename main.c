@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
+/*   By: sraza <sraza@student.42tokyo.jp>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 11:52:41 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/06 21:21:21 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/07 20:47:35 by sraza            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,12 @@ int main(void)
     while (1)
     {
         str = get_next_line(fd);
-        printf("str = %s\n", str);
+        printf("str = %s", str);
+        fflush(stdout);
+        free(str);
         if (str == NULL)
-        {
-            printf("str is NULL \n");
             break ;
-        }
-        printf("str = %s\n", str);
     }
-    printf("---------------5--------------\n");
+    system("leaks a.out");
     return (0);
 }
