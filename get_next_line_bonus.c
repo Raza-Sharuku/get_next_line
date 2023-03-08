@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: razasharuku <razasharuku@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/24 15:37:59 by razasharuku       #+#    #+#             */
-/*   Updated: 2023/03/08 09:38:51 by razasharuku      ###   ########.fr       */
+/*   Updated: 2023/03/08 13:23:22 by razasharuku      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,15 @@ char	*ft_read_file(int fd, char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char		*buffer;
+	static char		*buffer[OPEN_MAX];
 	char			*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = ft_read_file(fd, buffer);
-	if (buffer == 0)
+	buffer[fd] = ft_read_file(fd, buffer[fd]);
+	if (buffer[fd] == 0)
 		return (NULL);
-	line = ft_create_line(buffer);
-	buffer = ft_change_buffer(buffer);
+	line = ft_create_line(buffer[fd]);
+	buffer[fd] = ft_change_buffer(buffer[fd]);
 	return (line);
 }
