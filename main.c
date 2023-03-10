@@ -20,7 +20,7 @@ int main(void)
 {
     int fd;
     char *str;
-    fd = open("raza.txt", O_RDONLY);
+    fd = open("test.txt", O_RDONLY);
     printf("fd = %d \n", fd);
     while (1)
     {
